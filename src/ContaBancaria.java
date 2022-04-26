@@ -1,17 +1,17 @@
 public class ContaBancaria {
 
-    int numero;
-    long cpf;
+    int num;
+    String cpf;
     double saldo;
 
-    ContaBancaria(int numero, long cpf, double saldo){
-        this.numero = numero;
-        this.cpf = cpf;
-        this.saldo = saldo;
+    public ContaBancaria(int numero, String cdgPessoa, double sld){
+        this.num = numero;
+        this.cpf = cdgPessoa;
+        this.saldo = sld;
     }
 
-    String dadosConta(){
-        String linhaConta = "Conta Número: " + this.numero + "\nCPF: " + this.cpf + "\nSaldo: " + this.saldo;
+    public String dadosConta(){
+        String linhaConta = "Conta Número: " + this.num + "\nCPF: " + this.cpf + "\nSaldo: " + this.saldo;
         return linhaConta;  //retorna uma string com os dados da conta
     }
 }

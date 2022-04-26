@@ -1,32 +1,48 @@
 public class Lista {
     
-    int tam;
-    int quant;
-    ContaBancaria[] contas;
+    public Elemento prim, ult;
 
-    public Lista(int tamanho){
-        this.tam = tamanho;
-        this.quant = 0;
-        this.contas = new ContaBancaria [tamanho];
+    public Lista(){
+        prim = new Elemento(null);
+        ult = prim;
     }
 
-    public void inserir(ContaBancaria nova){
-        if(quant < tam){
-            contas[quant] = nova;
-            quant++;
+    public void enfileirar(ContaBancaria nova){
+        Elemento novo = new Elemento(nova);
+        ult.prox = novo;
+        ult = novo;
+    }
+
+    public ContaBancaria desenfileirar(){
+        Elemento aux = prim.prox;
+        prim.prox = aux.prox;
+        aux.prox = null;
+        if(aux == ult)
+            ult = prim;
+        return aux.conta;
+    }
+
+    public ContaBancaria buscar(int num){
+        Elemento aux = prim.prox;
+        while(aux != null){
+            if(num == aux.conta.num)
+                return aux.conta;
+            aux = aux.prox;
         }
+        return null;
     }
 
-    public ContaBancaria retirar(int numero){
-        if(quant > 0)
-            for(int i = 0; i < quant; i++)
-                if(numero == contas[i].numero){
-                    ContaBancaria aux = contas[i];
-                    for(int j = i + 1; j < quant; j++)
-                        contas[j - 1] = contas[j];
-                    quant--;
-                    return aux;
-                }
-        return null;
+    public String imprimir(){
+        StringBuilder sb = new StringBuilder();
+        Elemento aux = prim.prox;
+        while(aux != null){
+            sb.append(aux.conta.dadosConta() + "\n");
+            aux = aux.prox;
+        }
+        return sb.toString();
+    }
+
+    public boolean vazia(){
+        return prim == ult;
     }
 }
