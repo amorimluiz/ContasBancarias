@@ -3,45 +3,63 @@ public class Lista {
     public Elemento prim, ult;
 
     public Lista(){
-        prim = new Elemento(null);
-        ult = prim;
+        this.prim = new Elemento(null);
+        this.ult = prim;
     }
 
-    public void enfileirar(ContaBancaria nova){
-        Elemento novo = new Elemento(nova);
-        ult.prox = novo;
-        ult = novo;
+    /**
+     * insere um objeto na lista
+     * @param novo o objeto que sera inserido
+     */
+    public void inserir(Object novo){
+        Elemento novoElemento = new Elemento(novo);
+        ult.prox = novoElemento;
+        ult = novoElemento;
     }
 
-    public ContaBancaria desenfileirar(){
+    /**
+     * retira um objeto da lista
+     * @return o objeto que sera retirado
+     */
+    public Object retirar(){
         Elemento aux = prim.prox;
         prim.prox = aux.prox;
         aux.prox = null;
         if(aux == ult)
             ult = prim;
-        return aux.conta;
+        return aux.dado;
     }
 
-    public ContaBancaria buscar(int num){
+    /**
+     * busca um objeto na lista
+     * @param outro o objeto mock que sera usado para buscar o objeto desejado
+     * @return o objeto desejado
+     */
+    public Object buscar(Object outro){
         Elemento aux = prim.prox;
         while(aux != null){
-            if(num == aux.conta.num)
-                return aux.conta;
+            if(aux.dado.equals(outro))
+                return aux.dado;
             aux = aux.prox;
         }
         return null;
     }
 
-    public String imprimir(){
+    @Override
+    public String toString(){
         StringBuilder sb = new StringBuilder();
         Elemento aux = prim.prox;
-        while(aux != null){
-            sb.append(aux.conta.dadosConta() + "\n");
+        while(aux!=null){
+            sb.append(aux.dado.toString() + "\n");
             aux = aux.prox;
         }
         return sb.toString();
     }
 
+    /**
+     * verifica se a lista esta vazia
+     * @return true se estiver vazia
+     */
     public boolean vazia(){
         return prim == ult;
     }
