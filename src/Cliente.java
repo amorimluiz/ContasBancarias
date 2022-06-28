@@ -25,7 +25,9 @@ public class Cliente implements IComparavel{
 
     @Override
     public int hashCode(){
-        int codigo = Integer.parseInt(this.cpf.substring(1, 7));
+        int codigo = 0;
+        if(this.cpf.length() > 9)
+            codigo = Integer.parseInt(this.cpf.substring(1, 7));
         return codigo;
     }
     
@@ -78,7 +80,6 @@ public class Cliente implements IComparavel{
      */
     public void inserirNovaConta(ContaBancaria nova){
         this.contasDoCliente.inserir(nova);
-        this.saldoTotal += nova.saldo;
     }
 
     /**
@@ -89,7 +90,7 @@ public class Cliente implements IComparavel{
         Elemento aux = this.contasDoCliente.prim.prox;
         while(aux != null){
             ContaBancaria essaConta = (ContaBancaria)aux.dado;
-            saldoTotal += essaConta.saldo;
+            saldoTotal += essaConta.saldoAtual;
             aux = aux.prox;
         }
         return saldoTotal;
