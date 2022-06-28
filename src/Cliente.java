@@ -17,10 +17,7 @@ public class Cliente implements IComparavel{
     @Override
     public boolean equals(Object outro){
         Cliente outroCliente = (Cliente)outro;
-        if(this.cpf.equals(outroCliente.cpf))
-            return true;
-
-        return false;
+        return this.cpf.equals(outroCliente.cpf);
     }
 
     @Override
@@ -40,19 +37,13 @@ public class Cliente implements IComparavel{
     @Override
     public boolean maiorQue(IComparavel outro) {
         Cliente outroCliente = (Cliente)outro;
-        if(this.saldoTotal > outroCliente.saldoTotal)
-            return true;
-
-        return false;
+        return this.saldoTotal > outroCliente.saldoTotal;
     }
 
     @Override
     public boolean menorQue(IComparavel outro) {
         Cliente outroCliente = (Cliente)outro;
-        if(this.saldoTotal < outroCliente.saldoTotal)
-            return true;
-
-        return false;
+        return this.saldoTotal < outroCliente.saldoTotal;
     }
 
     /**
