@@ -12,13 +12,11 @@ public class ABB {
         direita = esquerda = null;
     }
 
-    public ABB inserir(IComparavel novo){
-        if(this.raiz == null){
+    public void inserir(IComparavel novo){
+        if(this.raiz == null)
             this.raiz = novo;
-            return this;
-        }
         else
-            return this.inserir(novo, this);
+            this.inserir(novo, this);
     }
 
     public ABB inserir(IComparavel novo, ABB subarvore){

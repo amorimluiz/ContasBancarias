@@ -47,7 +47,7 @@ public class App {
 
     /**
      * carrega dados de um arquivo de contas
-     * @return uma tabela hash de contas
+     * @return uma arvore binaria de busca de contas
      * @throws FileNotFoundException
      */
     public static ABB carregarContas() throws FileNotFoundException{
@@ -117,7 +117,7 @@ public class App {
     }
     
     /**
-     * salva os dados da tabela no arquivo de contas
+     * salva os dados arvore de contas no arquivo de contas
      * @throws IOException
      */
     public static void salvarDadosContas() throws IOException{
@@ -136,7 +136,7 @@ public class App {
         escritor.close();
     }
 
-     /**
+    /**
      * escreve os dados da conta como sera salvo no arquivo
      * @param subarvore arvore com os dados
      * @return os dados da conta no formato que sera salvo no arquivo
@@ -381,7 +381,7 @@ public class App {
                         System.out.println("SALDO MÉDIO");
                         System.out.println("========================================");
                         double saldoMedio = calcularSaldoMedio();
-                        System.out.println("O Saldo Medio dos Clientes e: " + formatador.format(saldoMedio));
+                        System.out.println("O Saldo Medio dos Clientes é: " + formatador.format(saldoMedio));
                         pausar(teclado);
                         break;
 
